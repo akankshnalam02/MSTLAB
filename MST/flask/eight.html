@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Image Carousel</title>
+  <style>
+    #carousel img {
+      width: 300px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Image Carousel</h2>
+  <div id="carousel">
+    <img src="new.png" id="carouselImage" alt="carousel image">
+  </div>
+  <br>
+  <button onclick="prevImage()">Previous</button>
+  <button onclick="nextImage()">Next</button>
+
+  <script>
+    var images = [
+      "Screenshot 2024-09-29 233053.png",
+      "Screenshot 2024-10-16 070009.png",
+      "WhatsApp Image 2024-05-18 at 18.28.40_ba8776d2.jpg",  
+    ];
+    var currentIndex = 0;
+
+    function showImage(index) {
+      document.getElementById('carouselImage').src = images[index];
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    }
+  </script>
+</body>
+</html>

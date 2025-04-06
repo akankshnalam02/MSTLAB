@@ -1,0 +1,29 @@
+
+
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS Example</title>
+  <!-- Load AngularJS from CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="myController">
+
+  <h1>{{ message }}</h1>
+
+  <!-- AngularJS App Script -->
+  <script>
+    // Create AngularJS module
+    var app = angular.module("myApp", []);
+
+    // Create Controller
+    app.controller("myController", function($scope) {
+      $scope.message = "Hello, Haneesh! Welcome to AngularJS!";
+    });
+  </script>
+
+</body>
+</html>
+
+

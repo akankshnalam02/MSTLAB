@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Blog</title>
+  <link rel="stylesheet" href="five.css">
+</head>
+<body>
+  <header>
+    <h1>My Blog</h1>
+  </header>
+
+  <main>
+    <article class="post">
+      <header>
+        <h2>Blog Post Title</h2>
+        <p class="meta">Posted on <time datetime="2025-04-06">April 6, 2025</time> by Author</p>
+      </header>
+      <p>This is the content of the blog post. It provides insights, thoughts, and useful information.</p>
+    </article>
+
+    <section class="comments">
+      <h3>Comments</h3>
+      <div class="comment">
+        <p><strong>User1:</strong> Great post!</p>
+      </div>
+      <div class="comment">
+        <p><strong>User2:</strong> Very informative.</p>
+      </div>
+      <form id="commentForm" class="comment-form">
+        <textarea name="comment" id="commentText" rows="4" placeholder="Write your comment here..." required></textarea>
+        <button type="submit">Submit Comment</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Blog</p>
+  </footer>
+  <script>
+    // Handle comment submission
+    document.getElementById('commentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var commentText = document.getElementById('commentText').value.trim();
+      if(commentText === "") {
+        alert("Please enter a comment.");
+        return;
+      }
+      
+      // Create a new comment element
+      var newComment = document.createElement('div');
+      newComment.classList.add('comment');
+      newComment.innerHTML = '<p><strong>You:</strong> ' + commentText + '</p>';
+      
+      // Append the new comment to the comment section
+      document.getElementById('commentSection').appendChild(newComment);
+      
+      // Clear the comment input field
+      document.getElementById('commentText').value = "";
+    });
+  </script>
+</body>
+</html>

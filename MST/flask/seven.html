@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Guessing Game</title>
+</head>
+<body>
+  <h2>Guessing Game</h2>
+  <p>Guess a number between 1 and 10:</p>
+  <input type="number" id="guess" />
+  <button onclick="checkGuess()">Guess</button>
+  <p id="result"></p>
+
+  <script>
+    // Generate a random number between 1 and 10
+    var randomNumber = Math.floor(Math.random() * 10) + 1;
+    
+    function checkGuess() {
+      var userGuess = Number(document.getElementById('guess').value);
+      
+      // Conditional statements to check the guess
+      if (userGuess === randomNumber) {
+        document.getElementById('result').innerText = "Correct! You guessed the number!";
+      } else if (userGuess < randomNumber) {
+        document.getElementById('result').innerText = "Too low! Try again.";
+      } else {
+        document.getElementById('result').innerText = "Too high! Try again.";
+      }
+    }
+  </script>
+</body>
+</html>

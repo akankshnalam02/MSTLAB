@@ -1,0 +1,72 @@
+<!-- Great Haneesh! 😊  
+You're asking how to *fetch data using HTTP client in AngularJS* (v1.x). Let's do it in a very, very easy and understanding way.
+
+---
+
+## ✅ Step-by-Step: Fetch Data Using $http in AngularJS
+
+AngularJS uses $http service to make API calls.
+
+---
+
+### ✅ 1. Sample index.html file
+
+html -->
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS HTTP Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="DataController">
+
+  <h2>Users List</h2>
+  <ul>
+    <li ng-repeat="user in users">
+      {{ user.name }}
+    </li>
+  </ul>
+
+  <script>
+    var app = angular.module("myApp", []);
+
+    app.controller("DataController", function($scope, $http) {
+      $http.get("https://jsonplaceholder.typicode.com/users")
+        .then(function(response) {
+          $scope.users = response.data;
+        }, function(error) {
+          console.error("Error fetching data:", error);
+        });
+    });
+  </script>
+
+</body>
+</html>
+
+
+<!-- ---
+
+### 🧠 Explanation in Easy English:
+
+- ng-controller="DataController" → This controller handles data.
+- $http.get(...) → Used to fetch data from a URL/API.
+- ng-repeat="user in users" → Loops through the list of users and shows their names.
+
+---
+
+### ✅ Output:
+
+It fetches *user data* from jsonplaceholder.typicode.com and shows names like:
+
+- Leanne Graham  
+- Ervin Howell  
+- Clementine Bauch  
+...and so on.
+
+---
+
+Do you want to *post data (send data)* using $http.post() also?  
+Or do the same in *Angular 2+* using HttpClientModule?
+
+Let me know and I’ll help right away! -->

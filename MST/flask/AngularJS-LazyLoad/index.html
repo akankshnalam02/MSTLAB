@@ -1,0 +1,136 @@
+<!-- Of course, Haneesh! 💻  
+Let me show you *step-by-step* how to run the *AngularJS lazy loading project* using ocLazyLoad 🔥  
+(We’ll do this using just *Notepad and browser*, no installations needed!)
+
+---
+
+## ✅ STEP-BY-STEP: Run Lazy Loading in AngularJS
+
+---
+
+### ✅ 1. Create a Folder for Your Project
+
+📁 Create a folder on your desktop named:
+
+
+AngularJS-LazyLoad
+
+
+---
+
+### ✅ 2. Create 3 Files Inside the Folder
+
+
+📄 index.html
+📄 lazy.html
+📄 lazyController.js
+
+
+---
+
+### ✅ 3. Copy the Code into Files
+
+---
+
+#### 📄 index.html
+
+html -->
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>Lazy Load Example</title>
+</head>
+<body>
+
+  <a ui-sref="home">Home</a> | 
+  <a ui-sref="lazy">Lazy Module</a>
+  
+  <div ui-view></div>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.29/angular-ui-router.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/oclazyload/1.1.0/ocLazyLoad.min.js"></script>
+
+  <script>
+    var app = angular.module('myApp', ['ui.router', 'oc.lazyLoad']);
+
+    app.config(function($stateProvider, $urlRouterProvider) {
+      $urlRouterProvider.otherwise('/home');
+
+      $stateProvider
+        .state('home', {
+          url: '/home',
+          template: '<h2>Welcome to Home Page</h2>'
+        })
+
+        .state('lazy', {
+          url: '/lazy',
+          templateUrl: 'lazy.html',
+          controller: 'LazyCtrl',
+          resolve: {
+            loadMyCtrl: function($ocLazyLoad) {
+              return $ocLazyLoad.load('lazyController.js');
+            }
+          }
+        });
+    });
+  </script>
+
+</body>
+</html>
+
+
+<!-- ---
+
+#### 📄 lazy.html
+
+html
+<h2>This is Lazy Loaded!</h2>
+<p>{{ message }}</p>
+
+
+---
+
+#### 📄 lazyController.js
+
+js
+angular.module('myApp')
+.controller('LazyCtrl', function($scope) {
+  $scope.message = "Hey Haneesh! This module is lazy loaded!";
+});
+
+
+---
+
+### ✅ 4. Open the Project
+
+🖱 *Right-click* on index.html → Click *Open With* → Choose your *Browser (like Chrome or Edge)*
+
+---
+
+### ✅ 5. Test the Output
+
+- You will see:  
+  *Home Page*
+
+- Now, click *Lazy Module*
+
+👉 It will load **lazy.html** and **lazyController.js** only now (Lazy Loading working ✅)
+
+---
+
+### 🎉 Output:
+
+- ✅ When you click *Lazy Module*, you’ll see:
+  
+
+This is Lazy Loaded!
+Hey Haneesh! This module is lazy loaded!
+
+
+---
+
+If you want, I can give you a *.zip file* with everything ready too.  
+Let me know if you're stuck at any step — I’ll guide you like a buddy 😄 -->

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Registration</title>
+  <link rel="stylesheet" href="two.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Event Registration</h1>
+    <form id="registrationForm">
+      <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="fullname" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="event">Select Event:</label>
+        <select id="event" name="event">
+          <option value="workshop">Workshop</option>
+          <option value="seminar">Seminar</option>
+          <option value="conference">Conference</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="comments">Additional Comments:</label>
+        <textarea id="comments" name="comments" rows="4"></textarea>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  <script>
+    // Handle form submission with basic validation
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // prevent the default form submission
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+
+      if(name === "" || email === ""){
+        alert("Please fill in all required fields.");
+        return;
+      }
+      
+      // Simulate successful registration feedback
+      alert("Registration successful!\nName: " + name + "\nEmail: " + email);
+      
+      // Optionally, add AJAX submission or further processing here
+      
+      // Reset the form after submission
+      document.getElementById('registrationForm').reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!-- Awesome, Haneesh! 🔐😄  
+Let’s implement *JWT Authentication in AngularJS (v1.x)* in a super-easy and step-by-step way just for you.
+
+---
+
+## ✅ JWT Authentication using AngularJS (v1.x)
+
+We’ll use:
+- ✅ AngularJS (v1.8)
+- ✅ $http to send login request
+- ✅ Store the JWT token in localStorage
+
+---
+
+## ✅ Step-by-Step Guide
+
+---
+
+### 🔹 1. Create a Folder jwt-angularjs
+
+Inside it, create 3 files:
+
+
+📄 index.html
+📄 app.js
+📄 dashboard.html
+
+
+---
+
+### 🔹 2. index.html
+
+html -->
+<!DOCTYPE html>
+<html ng-app="jwtApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS JWT Auth</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="LoginController">
+
+  <h2>Login with JWT</h2>
+
+  <form ng-submit="login()">
+    <label>Email:</label>
+    <input type="email" ng-model="email" required><br><br>
+
+    <label>Password:</label>
+    <input type="password" ng-model="password" required><br><br>
+
+    <button type="submit">Login</button>
+  </form>
+
+  <p style="color: green;" ng-if="token">Token: {{ token }}</p>
+  <p style="color: red;" ng-if="error">{{ error }}</p>
+
+</body>
+</html>
+
+<!-- 
+---
+
+### 🔹 3. app.js
+
+js
+var app = angular.module('jwtApp', []);
+
+app.controller('LoginController', function($scope, $http) {
+
+  $scope.login = function() {
+    const loginData = {
+      email: $scope.email,
+      password: $scope.password
+    };
+
+    $http.post('https://reqres.in/api/login', loginData)
+      .then(function(response) {
+        $scope.token = response.data.token;
+        localStorage.setItem('jwtToken', $scope.token);
+        $scope.error = '';
+        alert("Login Successful!");
+      }, function(error) {
+        $scope.error = "Login failed!";
+        $scope.token = '';
+      });
+  };
+
+});
+
+
+---
+
+### ✅ How to Run
+
+🧾 *Steps*:
+
+1. Save the files inside a folder (jwt-angularjs)
+2. Open index.html in any browser
+3. Enter:
+   - Email: eve.holt@reqres.in  
+   - Password: cityslicka
+4. Click Login
+
+👉 You will see a token appear and stored in browser.
+
+---
+
+### ✅ Bonus: Send Authenticated Request (using token)
+
+Add this to app.js if you want to fetch protected data using token:
+
+js
+$scope.getProfile = function() {
+  const token = localStorage.getItem('jwtToken');
+
+  $http.get('https://your-api.com/profile', {
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  }).then(function(res) {
+    console.log(res.data);
+  });
+};
+
+
+---
+
+## ✅ Summary
+
+| Feature | Done |
+|--------|------|
+| Login Form | ✅ |
+| JWT Token Fetch | ✅ |
+| Token Store in Browser | ✅ |
+| Use Token in Headers | ✅ |
+
+---
+
+If you want this in *downloadable .zip file, or want to continue to **token verification, route protection*, just let me know!
+
+You're doing awesome, Haneesh! 💪 Keep rocking your AngularJS project! -->
